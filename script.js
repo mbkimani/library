@@ -5,12 +5,20 @@ function dataAttrLibrary() {
     mainLibrary[i]["data-index"] = i;
   }
 }
-//Book object for all new books
-function Book(title, author, pages, readStatus) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.readStatus = readStatus;
+
+//Book Class for implementation of all new books
+
+class Bookclass {
+  constructor(title, author, pages, readStatus) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.readStatus = readStatus;
+  }
+
+  info() {
+    return `${this.title} by ${this.author} has ${this.pages} pages, and is ${this.readStatus}`;
+  }
 }
 //Method for viewing a book information
 
@@ -38,32 +46,22 @@ viewBook.addEventListener("click", () => {
   removeABook.forEach((removeButton) => {
     removeButton.addEventListener("click", () => {
       let indexButton = removeButton["data-index"];
-      mainLibrary.filter(
-        (element) => {
-          if (element["data-index"] == indexButton) {
-            let indexElement = mainLibrary.indexOf(
-              mainLibrary[element["data-index"]]
-            );
-            mainLibrary.splice(indexElement, 1);
-            removeButton.parentElement.classList.remove("newcard");
-            removeButton.parentElement.textContent = "";
-            alert(`${element.title} by ${element.author} removed successfully`);
-            return mainLibrary;
-          }
+      mainLibrary.filter((element) => {
+        if (element["data-index"] == indexButton) {
+          let indexElement = mainLibrary.indexOf(
+            mainLibrary[element["data-index"]]
+          );
+          mainLibrary.splice(indexElement, 1);
+          removeButton.parentElement.classList.remove("newcard");
+          removeButton.parentElement.textContent = "";
+          alert(`${element.title} by ${element.author} removed successfully`);
+          return mainLibrary;
         }
-
-        //console.log(mainLibrary.slice(mainLibrary[element["data-index"]], 1))
-      );
+      });
     });
   });
 });
 
-Book.prototype.info = function () {
-  return `${this.title} by ${this.author} has ${this.pages} pages, and is ${this.readStatus}`;
-};
-Book.prototype.readStatus = function() {
-
-}
 //view all books in library in their own cards
 const display = document.querySelector("div.display");
 function viewLibraryBooks() {
@@ -88,34 +86,17 @@ addBook.addEventListener("click", () => {
   const userPages = document.querySelector("input#pages");
   const userRead = checkRead();
 
-  const newBook = new Book(
+  const newBook = new Bookclass(
     userTitle.value,
     userAuthor.value,
     userPages.value,
     userRead
   );
   mainLibrary.push(newBook);
-
   para.textContent = newBook.info();
   message.appendChild(para);
 });
 
-/*
-function addBooktoLibrary() {
-  const userTitle = document.querySelector("input#title");
-  const userAuthor = document.querySelector("input#author");
-  const userPages = document.querySelector("input#pages");
-  const userRead = "document.querySelector('input#read')";
-  const newBook = new Book(
-    userTitle.value,
-    userAuthor.value,
-    userPages.value,
-    userRead
-  );
-  mainLibrary.push(newBook);
-  console.log(`${newBook.info()}`);
-}
-*/
 const form = document.querySelector("form");
 function removeForm() {
   form.className = "removeform";
@@ -143,6 +124,3 @@ function checkRead() {
     }
   }
 }
-
-//toggle read status
-
