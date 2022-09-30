@@ -1,0 +1,46 @@
+table, th, td {
+    text-align: justify;
+    border: 1px solid lightgray;
+    margin: 5px;
+    padding: 5px;
+    border-collapse: collapse;
+}
+
+thead {
+    border: 1px solid lightblue;
+}
+
+.newcard {
+    width: auto;
+    border: 1px solid rgb(241, 240, 240);
+    float: left;
+    padding: 10px;
+    white-space: pre-line;
+    margin: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.removeform {
+    display: none;
+    flex-direction: column;
+}
+
+.displayForm {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    width: 20%;
+    border: 1px solid rgb(238, 237, 237);
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+fieldset {
+    width: 20%;
+}
+
+.removeButton {
+    display: block;
+}

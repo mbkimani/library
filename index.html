@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Library</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <h1>Book Library</h1>
+    <button class="newBook">New Book</button>
+    <table class="libraryTable">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Pages</th>
+          <th>Read</th>
+        </tr>
+      </thead>
+    </table>
+    <button class="viewBooks">View Books</button>
+    <div class="display"></div>
+    <section class="form">
+      <form
+        action="#"
+        method="get"
+        class="displayForm"
+        onsubmit="saveOptions(this); return false"
+      >
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" />
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author" />
+        <label for="pages">Pages</label>
+        <input type="number" name="pages" id="pages" />
+        <fieldset>
+          <legend>Have you Read this Book:</legend>
+          <label for="yes">Yes</label>
+          <input type="radio" name="read" id="yes" value="yes" />
+          <label for="read">No</label>
+          <input type="radio" name="read" id="no" value="no" />
+        </fieldset>
+
+        <input
+          type="button"
+          class="addBook"
+          onclick="removeForm()"
+          value="Add Book Now"
+        />
+      </form>
+    </section>
+    <div class="message"></div>
+  </body>
+</html>
